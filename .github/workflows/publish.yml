@@ -13,11 +13,14 @@ jobs:
         uses: nuget/setup-nuget@v2
         
       - name: Navigate to Workspace
-        run: cd $GITHUB_WORKSPACE
+        run: cd $GITHUB_WORKSPACE\SimplSharp
+
+      - name: List workspace contents
+        run: ls
 
       - name: Restore Packages
         run: nuget restore
 
       - name: Build Solution
         run: |
-          msbuild.exe Sandbox.sln /p:platform="Any CPU" /p:configuration="Release"
+          msbuild.exe SimplSharpTools.sln /p:platform="Any CPU" /p:configuration="Release"
