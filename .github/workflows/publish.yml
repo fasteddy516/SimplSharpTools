@@ -13,7 +13,9 @@ jobs:
         uses: nuget/setup-nuget@v2
         
       - name: Navigate to Workspace
-        run: cd $GITHUB_WORKSPACE\SimplSharp
+        run: |
+          cd $GITHUB_WORKSPACE
+          cd SimplSharp
 
       - name: List workspace contents
         run: ls
