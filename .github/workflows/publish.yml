@@ -13,9 +13,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: List workspace contents
-        run: ls
-
       - name: Restore Packages
         working-directory: ./SimplSharp
         run: nuget restore
@@ -23,3 +20,20 @@ jobs:
       - name: Build Solution
         working-directory: ./SimplSharp
         run: msbuild.exe SimplSharpTools.sln /p:platform="Any CPU" /p:configuration="Release"
+
+      - name: Create NuGet Package
+        working-directory: ./SimplSharp/SimplSharpTools
+        run: nuget pack
+
+      - name: List workspace contents
+        working-directory: ./SimplSharp/SimplSharpTools
+        run: ls
+
+      - name: Authenticate to GitHub Packages
+        working-directory: ./SimplSharp
+        run: nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/fasteddy516/index.json"
+
+      - name: Publish to GitHub Packages
+        working-directory: ./SimplSharp
+        run: nuget push "./SimplSharpTools/*.nupkg" --source "github"
+        
