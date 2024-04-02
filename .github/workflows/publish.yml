@@ -37,5 +37,5 @@ jobs:
 
       - name: Publish to GitHub Packages
         working-directory: ./SimplSharp
-        run: nuget push "./SimplSharpTools/*.nupkg" -Source "GitHub"
+        run: nuget push "./SimplSharpTools/SimplSharp/*.nupkg" -Source "GitHub"
         
