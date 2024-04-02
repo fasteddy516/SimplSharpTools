@@ -1,0 +1,23 @@
+name: Publish Nuget Package
+on: workflow_dispatch
+jobs:  
+  publish:    
+    runs-on: windows-latest
+    steps:      
+      - uses: actions/checkout@v4
+      
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2
+        
+      - name: Navigate to Workspace
+        run: cd $GITHUB_WORKSPACE
+
+      - name: Restore Packages
+        run: nuget restore
+
+      - name: Build Solution
+        run: |
+          msbuild.exe Sandbox.sln /p:platform="Any CPU" /p:configuration="Release"
