@@ -31,7 +31,7 @@ jobs:
 
       - name: Authenticate to GitHub Packages
         working-directory: ./SimplSharp
-        run: nuget add source --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/fasteddy516/index.json"
+        run: nuget source add --username USERNAME --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/fasteddy516/index.json"
 
       - name: Publish to GitHub Packages
         working-directory: ./SimplSharp
