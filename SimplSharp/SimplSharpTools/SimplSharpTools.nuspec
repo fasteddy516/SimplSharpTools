@@ -8,7 +8,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <!-- <icon>icon.png</icon> -->
-    <projectUrl>https://github.com/fasteddy516/CrestronSharpTools</projectUrl>
+    <projectUrl>https://github.com/fasteddy516/SimplSharpTools</projectUrl>
     <description>$description$</description>
     <releaseNotes>Initial release.</releaseNotes>
     <copyright>$copyright$</copyright>

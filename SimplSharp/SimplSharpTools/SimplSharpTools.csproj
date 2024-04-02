@@ -7,8 +7,8 @@
     <ProjectGuid>{2BE6D984-F1F1-4BD1-B232-FA9435CE31D8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CrestronSharpTools</RootNamespace>
-    <AssemblyName>CrestronSharpTools</AssemblyName>
+    <RootNamespace>SimplSharpTools</RootNamespace>
+    <AssemblyName>SimplSharpTools</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

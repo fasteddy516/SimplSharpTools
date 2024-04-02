@@ -1,4 +1,4 @@
-﻿namespace CrestronSharpTools
+﻿namespace SimplSharpTools
 {
     /// <summary>
     /// Provides utility methods for working with Simpl+ ushort representations of boolean values.

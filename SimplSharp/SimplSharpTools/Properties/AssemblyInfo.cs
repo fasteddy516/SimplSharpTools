@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("CrestronSharpTools")]
-[assembly: AssemblyDescription("A set of classes to assist with the development of Crestron SIMPL# libraries for use in SIMPL programs.")]
+[assembly: AssemblyTitle("SimplSharpTools")]
+[assembly: AssemblyDescription("A set of classes to assist with the development of Crestron SIMPL# libraries for use in SIMPL programs visd SIMPL+ modules.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Edward Wright")]
-[assembly: AssemblyProduct("CrestronSharpTools")]
+[assembly: AssemblyProduct("SimplSharpTools")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
