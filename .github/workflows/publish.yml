@@ -4,25 +4,22 @@ jobs:
   publish:    
     runs-on: windows-latest
     steps:      
-      - uses: actions/checkout@v4
-      
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
       - name: Setup NuGet
         uses: nuget/setup-nuget@v2
-        
-      - name: Navigate to Workspace
-        run: |
-          cd $GITHUB_WORKSPACE
-          cd SimplSharp
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: List workspace contents
         run: ls
 
       - name: Restore Packages
+        working-directory: ./SimplSharp
         run: nuget restore
 
       - name: Build Solution
-        run: |
-          msbuild.exe SimplSharpTools.sln /p:platform="Any CPU" /p:configuration="Release"
+        working-directory: ./SimplSharp
+        run: msbuild.exe SimplSharpTools.sln /p:platform="Any CPU" /p:configuration="Release"
