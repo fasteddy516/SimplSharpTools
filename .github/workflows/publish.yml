@@ -36,6 +36,6 @@ jobs:
         run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/fasteddy516/index.json" -UserName fasteddy516 -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText 
 
       - name: Publish to GitHub Packages
-        working-directory: ./SimplSharp
-        run: nuget push "./SimplSharpTools/SimplSharp/*.nupkg" -Source "GitHub"
+        working-directory: ./SimplSharp/SimplSharpTools
+        run: nuget push "*.nupkg" -Source "GitHub"
         
