@@ -10,7 +10,9 @@
     <!-- <icon>icon.png</icon> -->
     <projectUrl>https://github.com/fasteddy516/SimplSharpTools</projectUrl>
     <description>$description$</description>
-    <releaseNotes>Initial release.</releaseNotes>
+    <releaseNotes>
+      Initial release.
+    </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Crestron SIMPL series4</tags>
   </metadata>
