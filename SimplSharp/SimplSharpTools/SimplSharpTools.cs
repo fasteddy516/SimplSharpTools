@@ -1,18 +1,18 @@
 ﻿namespace SimplSharpTools
 {
     /// <summary>
-    /// Provides utility methods and constants for SimplSharpTools.
+    /// Provides version information for SimplSharpTools.
     /// </summary>
-    public static class SimplSharpTools
+    public static class SimplSharpToolsVersion
     {
         /// <summary>
         /// The full version of SimplSharpTools used for Assembly attributes.  Build number is always 0.
         /// </summary>
-        public const string AssemblyVersion = "0.0.1.0";
+        public const string Assembly = "0.0.2.0";
 
         /// <summary>
         /// Gets the offcial version of SimplSharpTools in major.minor.patch format.
         /// </summary>
-        public static string Version => AssemblyVersion.Substring(0, AssemblyVersion.LastIndexOf('.'));
+        public static string Package => Assembly.Substring(0, Assembly.LastIndexOf('.'));
     }
 }

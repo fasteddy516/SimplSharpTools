@@ -11,7 +11,7 @@
     <projectUrl>https://github.com/fasteddy516/SimplSharpTools</projectUrl>
     <description>$description$</description>
     <releaseNotes>
-      Initial release.
+      Renamed SimplSharpTools class to SimplSharpToolsVersion to avoid conflicts and compilation issues in SIMPL Windows.
     </releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>Crestron SIMPL series4</tags>
