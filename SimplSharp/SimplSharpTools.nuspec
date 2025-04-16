@@ -12,8 +12,11 @@
     <description>$description$</description>
     <releaseNotes>
       0.0.3
-      - Added a bunch of stuff
-      
+      - Added Platform class to determine if the code is running on Crestron hardware or in another environment
+      - Added Logger class to write message to the Crestron log if running on Crestron hardware
+      - Added ConsoleDebugger class to write messages to the console
+      - Added ANSIColor enum to define ANSI color codes for console output
+
       0.0.2
       - Renamed SimplSharpTools class to SimplSharpToolsVersion to avoid conflicts and compilation issues in SIMPL Windows.
 
