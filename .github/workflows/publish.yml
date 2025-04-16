@@ -24,11 +24,11 @@ jobs:
         run: msbuild.exe SimplSharpTools.sln /p:platform="Any CPU" /p:configuration="Release"
 
       - name: Create NuGet Package
-        working-directory: ./SimplSharp/SimplSharpTools
+        working-directory: ./SimplSharp
         run: nuget pack
 
       - name: List workspace contents
-        working-directory: ./SimplSharp/SimplSharpTools
+        working-directory: ./SimplSharp
         run: ls
 
       - name: Authenticate to GitHub Packages
@@ -36,6 +36,6 @@ jobs:
         run: nuget source Add -Name "GitHub" -Source "https://nuget.pkg.github.com/fasteddy516/index.json" -UserName fasteddy516 -Password ${{ secrets.GITHUB_TOKEN }} -StorePasswordInClearText 
 
       - name: Publish to GitHub Packages
-        working-directory: ./SimplSharp/SimplSharpTools
+        working-directory: ./SimplSharp
         run: nuget push "*.nupkg" -Source "GitHub"
         
