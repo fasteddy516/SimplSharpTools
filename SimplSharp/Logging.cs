@@ -1,4 +1,6 @@
 ﻿using Crestron.SimplSharp;
+using Independentsoft.Exchange;
+using System;
 
 namespace SimplSharpTools
 {
@@ -30,7 +32,7 @@ namespace SimplSharpTools
     {
         /// <summary>
         /// Logs a message with the specified log level. 
-        /// This method only logs messages if the application is running on a Crestron platform.
+        /// This method logs messages to the error log on Crestron platforms or the Console on other platforms.
         /// </summary>
         /// <param name="msg">The message to log.</param>
         /// <param name="level">The log level indicating the severity of the message.</param>
@@ -41,24 +43,29 @@ namespace SimplSharpTools
         /// <item><description><see cref="LogLevel.WARNING"/>: Logs warning messages.</description></item>
         /// <item><description><see cref="LogLevel.ERROR"/>: Logs error messages.</description></item>
         /// </list>
-        /// If the application is not running on a Crestron platform, this method does nothing.
         /// </remarks>
         public static void Log(string msg, LogLevel level)
         {
-            if (Platform.IsCrestron)
+            switch (level)
             {
-                switch (level)
-                {
-                    case LogLevel.NOTICE:
+                case LogLevel.NOTICE:
+                    if (Platform.IsCrestron)
                         ErrorLog.Notice(msg);
-                        break;
-                    case LogLevel.WARNING:
+                    else
+                        Console.WriteLine($"\u001b[{(int)DebugColor.Info}mNOTICE: {msg}\u001b[0m");
+                    break;
+                case LogLevel.WARNING:
+                    if (Platform.IsCrestron)
                         ErrorLog.Warn(msg);
-                        break;
-                    case LogLevel.ERROR:
+                    else
+                        Console.WriteLine($"\u001b[{(int)DebugColor.Warning}mWARNING: {msg}\u001b[0m");
+                    break;
+                case LogLevel.ERROR:
+                    if (Platform.IsCrestron)
                         ErrorLog.Error(msg);
-                        break;
-                }
+                    else
+                        Console.WriteLine($"\u001b[{(int)DebugColor.Error}mERROR: {msg}\u001b[0m");
+                    break;
             }
         }
     }

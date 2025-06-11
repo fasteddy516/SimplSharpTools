@@ -9,6 +9,11 @@ namespace SimplSharpTools
     public static class Platform
     {
         /// <summary>
+        /// The maximum number of program slots available on a Crestron control system.
+        /// </summary>
+        public const ushort MaxProgramSlots = 10;
+        
+        /// <summary>
         /// Stores the platform name determined at runtime.
         /// </summary>
         private static string _platform = _getPlatform();

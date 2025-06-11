@@ -19,6 +19,7 @@ namespace SimplSharpTools
         public const ANSIColor Start = ANSIColor.Green;
         public const ANSIColor Stop = ANSIColor.Magenta;
         public const ANSIColor Info = ANSIColor.BrightWhite;
+        public const ANSIColor Warning = ANSIColor.BrightYellow;
     }
 
 
@@ -35,6 +36,67 @@ namespace SimplSharpTools
         private Action<string> _output = null;
 
         private bool _enable = false;
+        private ushort _programSlot = 0;
+        private ushort _moduleId = 0;
+        private string _moduleName = "DBG";
+
+        /// <summary>
+        /// Gets or sets the program slot associated with the module.
+        /// </summary>
+        /// <remarks>Once the program slot is set, it cannot be changed. Attempting to set the value again
+        /// will result in an error. A value of 0 or a value exceeding <see cref="Platform.MaxProgramSlots"/> is
+        /// considered invalid and will not be accepted.</remarks>
+        public ushort ProgramSlot
+        {
+            get { return _programSlot; }
+            set
+            {
+                if (_programSlot == value) return;
+                if (_programSlot > 0)
+                {
+                    Print($"! ProgramSlot already set to {_programSlot}, cannot change to {value}", DebugColor.Error);
+                    return;
+                }
+                else if (value == 0 || value > Platform.MaxProgramSlots)
+                {
+                    Print($"! Requested ProgramSlot ({value}) is out of range (1-{Platform.MaxProgramSlots})", DebugColor.Error);
+                    return;
+                }
+                _programSlot = value;
+                Print($"@ ProgramSlot set to {_programSlot}", DebugColor.Info);
+            }
+        }
+        
+        /// <summary>
+        /// Gets or sets the unique identifier for the module.
+        /// </summary>
+        public ushort ModuleID
+        {
+            get { return _moduleId; }
+            set
+            {
+                if (_moduleId == value) return;
+                _moduleId = value;
+                Print($"@ ModuleID set to {_moduleId}", DebugColor.Info);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the module.
+        /// </summary>
+        public string ModuleName
+        {
+            get { return _moduleName; }
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    if (_moduleName == value) return;
+                    _moduleName = value.Substring(0,3).ToUpper();
+                    Print($"@ ModuleName set to '{_moduleName}'", DebugColor.Info);
+                }
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether debugging is enabled.
@@ -89,9 +151,9 @@ namespace SimplSharpTools
         public bool IncludeID { get; set; } = true;
 
         /// <summary>
-        /// Gets or sets the custom identifier to include in the output.
+        /// Gets the custom identifier for this debugger instance to include in the output.
         /// </summary>
-        public string ID { get; set; } = "";
+        public string ID => $"{ModuleName}-{ProgramSlot:D2}:{ModuleID:D2}";
 
         /// <summary>
         /// Outputs a debug message to the console or Crestron console.

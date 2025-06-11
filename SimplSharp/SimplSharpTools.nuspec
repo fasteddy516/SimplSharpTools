@@ -11,6 +11,11 @@
     <projectUrl>https://github.com/fasteddy516/SimplSharpTools</projectUrl>
     <description>$description$</description>
     <releaseNotes>
+      0.0.4
+      - Add Console output to Logger for non-Crestron platforms
+      - Add MaxProgramSlots property to Platform class to determine the maximum number of program slots available
+      - Added module name, module id and program slot to ConsoleDebugger class
+
       0.0.3
       - Added Platform class to determine if the code is running on Crestron hardware or in another environment
       - Added Logger class to write message to the Crestron log if running on Crestron hardware
@@ -26,7 +31,7 @@
     <copyright>$copyright$</copyright>
     <tags>Crestron SIMPL series4</tags>
     <dependencies>
-      <dependency id="Crestron.SimplSharp.SDK.Library" version="[2.21.90,)" />
+      <dependency id="Crestron.SimplSharp.SDK.Library" version="[2.21.121,)" />
     </dependencies>
   </metadata>
 </package>
